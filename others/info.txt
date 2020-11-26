@@ -1,4 +1,5 @@
 Testar webservice REST
+executar Servidor.java
 
 Utilizar curl
 http://curl.haxx.se/download.html
