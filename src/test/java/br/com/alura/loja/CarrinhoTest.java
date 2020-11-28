@@ -8,6 +8,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.glassfish.grizzly.http.server.HttpServer;
+import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.filter.LoggingFilter;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -21,10 +23,15 @@ import br.com.alura.loja.modelo.Produto;
 public class CarrinhoTest {
 	
 	private HttpServer server;
+	private Client client;
 	
 	@Before
     public void before() {
         this.server = Servidor.inicializaServidor();
+        
+        ClientConfig config = new ClientConfig();
+        config.register(new LoggingFilter());
+        this.client = ClientBuilder.newClient(config);
     }
 
     @After
@@ -34,8 +41,9 @@ public class CarrinhoTest {
 	
 	@Test
     public void testaQueAConexaoComOServidorFuncionaNoPathDeCarrinhos() {
-        Client client = ClientBuilder.newClient();
+        //Client client = ClientBuilder.newClient();
         WebTarget target = client.target("http://localhost:8080");
+        
         String conteudo = target.path("/carrinhos/1").request().get(String.class);
         Carrinho carrinho = (Carrinho) new XStream().fromXML(conteudo);
         Assert.assertEquals("Rua Vergueiro 3185, 8 andar", carrinho.getRua());
@@ -43,7 +51,7 @@ public class CarrinhoTest {
 	
 	@Test
     public void testaQueSuportaNovosCarrinhos(){
-        Client client = ClientBuilder.newClient();
+        //Client client = ClientBuilder.newClient();
         WebTarget target = client.target("http://localhost:8080");
         
         Carrinho carrinho = new Carrinho();
