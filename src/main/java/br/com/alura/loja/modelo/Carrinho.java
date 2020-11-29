@@ -37,10 +37,15 @@ public class Carrinho {
 	public void setRua(String rua) {
 		this.rua = rua;
 	}
+	
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
 	
+	public String getCidade() {
+		return cidade;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -67,6 +72,10 @@ public class Carrinho {
 				return;
 			}
 		}
+	}
+	
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
 	}
 	
 	public List<Produto> getProdutos() {
