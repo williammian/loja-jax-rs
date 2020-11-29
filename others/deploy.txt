@@ -1,0 +1,19 @@
+Dentro do diretório src main webapp
+
+Comprimir em um arquivo .zip a pasta
+WEB-INF
+e o arquivo
+index.html
+
+renomear o .zip para .war
+
+-------------------------------------
+
+Entrar na pasta do tomcat
+e colocar o .war
+na pasta webapps
+
+Efetuar o start do tomcat
+
+Ir no navegador e testar
+http://localhost:8080/loja-jax-rs/webapi/carrinhos/1
